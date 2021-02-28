@@ -10,7 +10,9 @@ export const useApi = (query) => {
     const URL3 = 'https://api.pexels.com/v1/curated?';
     const URL4 = 'https://api.pexels.com/v1/search?';
 
-    fetch(URL2, {
+    const MainUrl = process.env.REACT_APP_API_KEY ? URL2 : URL;
+
+    fetch(MainUrl, {
       headers: {
         Authorization: process.env.REACT_APP_API_KEY,
       }
