@@ -5,16 +5,18 @@ import {ReactComponent as Check} from '../../assets/img/button-icons/check.svg';
 
 import styles from './styles.module.css';
 
-import { useApi } from '../../api/useApi';
+import { useSearch } from '../../hooks/useSearch';
 
 export const SearchPicture = ({ onPictureSelect }) => {
-  const [query, setQuery] = useState('');
-  const { data, setData, isLoaded,} = useApi();
-  const [selectedId, setSelectedId] = useState(null);
+  const { 
+    data,
+    setData,
+    isLoaded,
+    searchText,
+    onSearchInput,
+    onSearchStart } = useSearch();
 
-  const onChangeQuery = (e) => {
-    setQuery(e.target.value.trimStart());
-  }
+  const [selectedId, setSelectedId] = useState(null);
 
   const onImageClick = (src, id) => (e) => {
     onPictureSelect(src);
@@ -40,8 +42,8 @@ export const SearchPicture = ({ onPictureSelect }) => {
     <>
       <div className={styles.pictureSelect}>
         <form action="" className={styles.form} onSubmit={onSubmit}>
-          <input type="text" className={styles.input} placeholder='Поиск' value={query} onChange={onChangeQuery}/>
-          <button className={styles.search}><Search/></button>
+          <input type="text" className={styles.input} placeholder='Поиск' value={searchText} onChange={onSearchInput}/>
+          <button className={styles.search} onClick={onSearchStart}><Search/></button>
         </form>
         <div className={styles.results}>
           {

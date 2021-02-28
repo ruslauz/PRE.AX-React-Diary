@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Main } from '../Main';
-import { AddNoteForm } from '../AddNoteForm/AddNoteForm.jsx/AddNoteForm';
+import { AddNoteForm } from '../AddNoteForm/AddNoteForm';
 import { SearchPicture } from '../SearchPicture';
 import { ReactComponent as BlankImg } from '../../assets/img/button-icons/image.svg';
 

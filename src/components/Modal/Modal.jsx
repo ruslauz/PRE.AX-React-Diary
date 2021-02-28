@@ -22,7 +22,7 @@ export const Modal = ({ onClose, data }) => {
             </div>
             <div className={styles.body}>
               <img src={img} alt="Фото" className={styles.img}/>
-              <div className={styles.text}>{`${text}`}</div>
+              <div className={styles.text}>{text}</div>
             </div>
           </div>
         </div>

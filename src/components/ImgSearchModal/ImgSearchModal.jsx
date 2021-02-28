@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 
 import {ReactComponent as Search} from '../../assets/img/button-icons/search.svg';
+import { useSearch } from '../../hooks/useSearch';
 
 import styles from './styles.module.css';
 
-import { useApi } from '../../api/useApi';
 
 export const ImgSearchModal = ({ onClose, onPictureSelect }) => {
-  const [query, setQuery] = useState('');
-  const { data, isLoaded } = useApi(query);
 
-  const onChangeQuery = (e) => {
-    setQuery(e.target.value.trimStart());
-  };
+  const { data,
+    isLoaded,
+    searchText,
+    onSearchInput,
+    onSearchStart } = useSearch();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -30,8 +30,8 @@ export const ImgSearchModal = ({ onClose, onPictureSelect }) => {
             <div className={styles.header}>
               <div className={styles.pictureSelect}>
                 <form action="" className={styles.form} onSubmit={onSubmit}>
-                  <input type="text" className={styles.input} placeholder='Поиск' onChange={onChangeQuery} value={query}/>
-                  <button className={styles.search}><Search/></button>
+                  <input type="text" className={styles.input} placeholder='Поиск' onChange={onSearchInput} value={searchText}/>
+                  <button className={styles.search} onClick={onSearchStart}><Search/></button>
                 </form>
               </div>
             </div>

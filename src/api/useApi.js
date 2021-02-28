@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 
-export const useApi = (query) => {
+export const useApi = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData] = useState(null);
+  const [query, setQuery] = useState('nature');
 
   useEffect(() => {
     const URL = 'http://localhost:3004/pictures';
-    const URL2 = 'https://api.pexels.com/v1/search?query=nature';
+    const URL2 = `https://api.pexels.com/v1/search?query=${query}`;
     const URL3 = 'https://api.pexels.com/v1/curated?';
     const URL4 = 'https://api.pexels.com/v1/search?';
 
@@ -30,6 +31,7 @@ export const useApi = (query) => {
   return {
     data,
     setData,
+    setQuery,
     isLoaded,
   }
 }

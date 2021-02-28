@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Button } from '../../Button';
-import { EmotionSelector } from '../../EmotionSelector';
+import { Button } from '../Button';
+import { EmotionSelector } from '../EmotionSelector';
 
 import styles from './styles.module.css';
-import {ReactComponent as Add} from '../../../assets/img/button-icons/add.svg'
+import {ReactComponent as Add} from '../../assets/img/button-icons/add.svg'
 
 
 export const AddNoteForm = ({ emotion, setEmotion }) => {
