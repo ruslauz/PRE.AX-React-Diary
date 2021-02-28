@@ -6,6 +6,7 @@
   width: 100%;
   filter: drop-shadow(0px 10px 30px rgba(0, 0, 0, 0.1));
   padding-top: 86.25%;
+  cursor: pointer;
 }
 
 .imageWrap {
@@ -42,11 +43,16 @@
   font-weight: bold;
   font-size: 18px;
   line-height: 21px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 10px;
 }
 
 .date{
   font-size: 12px;
   line-height: 14px;
+  white-space: nowrap;
 }
 
 .text {
@@ -83,8 +89,6 @@
   .footer {
     padding: 16px 17px 13px;
   }
-
-  .text {}
 }
 
 @media (max-width: 767px) {

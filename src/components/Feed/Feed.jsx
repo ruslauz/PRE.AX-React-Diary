@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { Main } from '../Main';
 import { Card } from '../Card/Card';
@@ -48,11 +48,6 @@ export const Feed = ({ filterText, filterEmotion }) => {
           modal && modalData
           ? <Modal
               data={modalData}
-              text={modalData.text}
-              title={modalData.title}
-              emotion={modalData.emotion}
-              date={modalData.date}
-              img={modalData && modalData.img}
               onClose={onModalClose}/>
           : null
         }

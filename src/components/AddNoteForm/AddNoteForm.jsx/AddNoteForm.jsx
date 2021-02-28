@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 import {ReactComponent as Add} from '../../../assets/img/button-icons/add.svg'
 
 
-export const AddNoteForm = () => {
+export const AddNoteForm = ({ emotion, setEmotion }) => {
   const onSubmit = e => {
     e.preventDefault();
   }
@@ -16,7 +16,7 @@ export const AddNoteForm = () => {
       <form action="" onSubmit={onSubmit} className={styles.form}>
         <div className={styles.formItem}>
           <input type="text" className={styles.input} placeholder='Название'/>
-          <EmotionSelector />
+          <EmotionSelector emotionValue={emotion} onChangeEmotion={setEmotion} />
           <input type="text" className={`${styles.input} ${styles.inputDate}`} placeholder='Дата'/>
         </div>
         <textarea name=""  className={styles.textarea} placeholder='Описание'></textarea>

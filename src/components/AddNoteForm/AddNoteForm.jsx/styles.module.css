@@ -91,6 +91,7 @@
     right: 80px;
     bottom: 40px;
     filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.2));
+    z-index: 3;
   }
 }
 

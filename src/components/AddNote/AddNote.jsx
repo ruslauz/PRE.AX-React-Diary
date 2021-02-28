@@ -11,7 +11,8 @@ import { ImgSearchModal } from '../ImgSearchModal/ImgSearchModal';
 
 export const AddNote = () => {
   const [selected, setSelected] = useState(false);
-  const [imgSrc, setImgSrc] = useState(null);
+  const [imgSrc, setImgSrc] = useState('');
+  const [emotion, setEmotion] = useState('');
   const [modal, setModal] = useState(false);
 
   const onModalOpen = (e) => {
@@ -41,7 +42,7 @@ export const AddNote = () => {
               }
             </div>
           </div>
-          <AddNoteForm />
+          <AddNoteForm emotion={emotion} setEmotion={setEmotion}/>
           <SearchPicture onPictureSelect={setImgSrc}/>
           {
             modal && <ImgSearchModal onClose={onModalClose} onPictureSelect={onPictureSelect}/>

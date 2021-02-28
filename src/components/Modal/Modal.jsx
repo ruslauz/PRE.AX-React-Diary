@@ -4,9 +4,8 @@ import {ReactComponent as Cross} from '../../assets/img/modal/close.svg'
 
 import styles from './styles.module.css';
 
-export const Modal = ({ title, date, text, img, emotion, onClose, data  }) => {
-  // const { title, date, text, img, emotion } = data;
-  console.log(img);
+export const Modal = ({ onClose, data }) => {
+  const { title, date, text, img, emotion } = data;
   const onModal = (e) => {
     e.stopPropagation();
   };
