@@ -1,0 +1,48 @@
+.app {
+  padding: 140px 40px 0 ;
+}
+
+.buttons {
+  display: flex;
+}
+
+.buttons button:first-child {
+  margin-right: 14px;
+}
+
+@media (max-width: 1439px) {
+  .app {
+    padding: 200px 80px 0;
+  }
+  .buttons {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .app {
+    padding: 130px 20px 20px;
+  }
+  .buttons {
+    position: fixed;
+    right: 20px;
+    bottom: 14px;
+    width: 280px;
+    margin-bottom: 0;
+  }
+  .buttons span {
+    display: none;
+  }
+  .buttons svg {
+    margin: 0;
+  }
+  .buttons button {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 3px;
+  }
+  .buttons button:first-child {
+    margin-right: 10px;
+  }
+}
