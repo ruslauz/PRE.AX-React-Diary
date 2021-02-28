@@ -3,13 +3,16 @@ import React, { useState } from 'react';
 import { Main } from '../Main';
 import { AddNoteForm } from '../AddNoteForm/AddNoteForm';
 import { SearchPicture } from '../SearchPicture';
+import { ImgSearchModal } from '../ImgSearchModal/ImgSearchModal';
+import { useSearch } from '../../hooks/useSearch';
 import { ReactComponent as BlankImg } from '../../assets/img/button-icons/image.svg';
 
 
 import styles from './styles.module.css';
-import { ImgSearchModal } from '../ImgSearchModal/ImgSearchModal';
 
 export const AddNote = () => {
+  const { ...useSearchData } = useSearch();
+
   const [selected, setSelected] = useState(false);
   const [imgSrc, setImgSrc] = useState('');
   const [emotion, setEmotion] = useState('');
@@ -43,9 +46,9 @@ export const AddNote = () => {
             </div>
           </div>
           <AddNoteForm emotion={emotion} setEmotion={setEmotion}/>
-          <SearchPicture onPictureSelect={setImgSrc}/>
+          <SearchPicture onPictureSelect={setImgSrc} useSearchData={useSearchData}/>
           {
-            modal && <ImgSearchModal onClose={onModalClose} onPictureSelect={onPictureSelect}/>
+            modal && <ImgSearchModal onClose={onModalClose} onPictureSelect={onPictureSelect} useSearchData={useSearchData}/>
           }
         </div>
       </Main>

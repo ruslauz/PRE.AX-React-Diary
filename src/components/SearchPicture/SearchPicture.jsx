@@ -5,16 +5,14 @@ import {ReactComponent as Check} from '../../assets/img/button-icons/check.svg';
 
 import styles from './styles.module.css';
 
-import { useSearch } from '../../hooks/useSearch';
-
-export const SearchPicture = ({ onPictureSelect }) => {
+export const SearchPicture = ({ onPictureSelect, useSearchData }) => {
   const { 
     data,
     setData,
     isLoaded,
     searchText,
     onSearchInput,
-    onSearchStart } = useSearch();
+    onSearchStart } = useSearchData;
 
   const [selectedId, setSelectedId] = useState(null);
 

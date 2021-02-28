@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 
 import {ReactComponent as Search} from '../../assets/img/button-icons/search.svg';
-import { useSearch } from '../../hooks/useSearch';
 
 import styles from './styles.module.css';
 
 
-export const ImgSearchModal = ({ onClose, onPictureSelect }) => {
+export const ImgSearchModal = ({ onClose, onPictureSelect, useSearchData }) => {
 
   const { data,
     isLoaded,
     searchText,
     onSearchInput,
-    onSearchStart } = useSearch();
+    onSearchStart } = useSearchData;
 
   const onSubmit = (e) => {
     e.preventDefault();
