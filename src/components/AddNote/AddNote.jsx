@@ -10,12 +10,27 @@ import { ReactComponent as BlankImg } from '../../assets/img/button-icons/image.
 
 import styles from './styles.module.css';
 
+const useAddNoteForm = () => {
+  const [emotion, setEmotion] = useState('');
+  const [title, setTile] = useState('');
+  const [date, setDate] = useState('');
+  const [text, setText] =useState('');
+
+  return {
+    emotion, setEmotion,
+    title, setTile,
+    date, setDate,
+    text, setText,
+  }
+}
+
+
 export const AddNote = () => {
-  const { ...useSearchData } = useSearch();
+  const useSearchData = useSearch();
+  const addNoteFormData = useAddNoteForm();
 
   const [selected, setSelected] = useState(false);
   const [imgSrc, setImgSrc] = useState('');
-  const [emotion, setEmotion] = useState('');
   const [modal, setModal] = useState(false);
 
   const onModalOpen = (e) => {
@@ -45,7 +60,7 @@ export const AddNote = () => {
               }
             </div>
           </div>
-          <AddNoteForm emotion={emotion} setEmotion={setEmotion}/>
+          <AddNoteForm />
           <SearchPicture onPictureSelect={setImgSrc} useSearchData={useSearchData}/>
           {
             modal && <ImgSearchModal onClose={onModalClose} onPictureSelect={onPictureSelect} useSearchData={useSearchData}/>
