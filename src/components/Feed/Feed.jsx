@@ -6,17 +6,13 @@ import { Modal } from '../Modal';
 
 import styles from './styles.module.css';
 
-import { useDb } from '../../api/useDb';
-
-export const Feed = ({ filterText, filterEmotion }) => {
-
-  const  { data, isLoaded } = useDb();
+export const Feed = ({ data, isLoaded }) => {
 
   const [modal, setModal] = useState(false);
   const [modalData, setModalData] = useState(null);
 
   const onModalClose = useCallback(() => setModal(false), [setModal]);
-  const onModalOpen = useCallback((data) => {
+  const onModalOpen = useCallback(data => {
     setModalData(data);
     setModal(true);
   }, [setModal, setModalData]);
@@ -26,11 +22,9 @@ export const Feed = ({ filterText, filterEmotion }) => {
       <Main>
         <div className={styles.cards}>
           {
-            isLoaded && data
+            isLoaded && data 
             ? data.map(dat => {
-              // const { src: {tiny, small, medium, large, original} } = dat
-              // console.log(dat);
-              const { id, img, title, date, text, emotion } = dat
+              const { id, img, title, date, description, mood } = dat
               return <Card
                 key={id}
                 data={dat}
@@ -38,10 +32,13 @@ export const Feed = ({ filterText, filterEmotion }) => {
                 img={img}
                 title={title}
                 date={date}
-                text={text}
-                emotion={emotion}/>
+                description={description}
+                mood={mood}/>
             })
             : <div>...Data Is Loading</div>
+          }
+          {
+            // [...new Array(4).keys()].map((i) => <div key={i} className='mask'></div>)
           }
         </div>
         {

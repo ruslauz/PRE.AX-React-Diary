@@ -12,11 +12,23 @@
   background: #FDFCF3;
 }
 
+.buttons {
+  display: flex;
+}
+
+.buttons button:first-child {
+  margin-right: 14px;
+}
+
 @media (max-width: 1439px) {
   .header {
     flex-wrap: wrap;
     padding: 36px 80px 20px;
     margin: 0;
+  }
+
+  .buttons {
+    margin-bottom: 20px;
   }
 }
 
@@ -24,6 +36,33 @@
   .header {
     padding: 20px 20px 18px;
     flex-wrap: wrap;
+    z-index: 3;
+  }
 
+  .buttons {
+    position: fixed;
+    right: 20px;
+    bottom: 14px;
+    width: 280px;
+    margin-bottom: 0;
+  }
+
+  .buttons span {
+    display: none;
+  }
+
+  .buttons svg {
+    margin: 0;
+  }
+
+  .buttons button {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 3px;
+  }
+
+  .buttons button:first-child {
+    margin-right: 10px;
   }
 }

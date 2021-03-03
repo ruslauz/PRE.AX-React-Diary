@@ -10,7 +10,7 @@
   padding: 60px 40px 133px;
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(10px);
-  z-index: 2;
+  z-index: 3;
 }
 
 .modal {
@@ -118,14 +118,16 @@
 
 .results {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* margin: -10px; */
 }
 
 .resultImg {
-  width: 100%;
   border-radius: 12px;
+  margin: 10px;
 }
 
-.resultImg:not(:last-child) {
+/* .resultImg:not(:last-child) {
   margin-bottom: 10px;
-}
+} */

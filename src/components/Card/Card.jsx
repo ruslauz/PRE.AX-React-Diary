@@ -2,8 +2,12 @@ import React from 'react';
 
 import styles from './styles.module.css';
 
-export const Card = ({ title, date, text, img, emotion, data, onClick }) => {
-  const onCardClick = () => onClick(data);
+export const Card = ({ title, date, description, img, mood, onClick }) => {
+  const onCardClick = () => onClick({ title, date, description, img, mood });
+  const cardDate = new Date(date).toLocaleString('ru-RU', {
+      day: 'numeric',
+      month: 'short'
+  }).replace('.', '');
 
   return (
     <>
@@ -14,12 +18,12 @@ export const Card = ({ title, date, text, img, emotion, data, onClick }) => {
         <div className={styles.footer}>
           <div className={styles.heading}>
             <h3 className={styles.title}>{title}</h3>
-            <span className={styles.date}>{date}</span>
+            <span className={styles.date}>{cardDate}</span>
           </div>
-          <p className={styles.text}>{text}</p>
+          <p className={styles.text}>{description}</p>
         </div>
         <div className={styles.emotion}>
-          {emotion}
+          {mood}
         </div>
       </div>
     </>

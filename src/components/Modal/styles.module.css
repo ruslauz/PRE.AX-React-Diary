@@ -10,7 +10,7 @@
   padding: 60px 40px 133px;
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(10px);
-  z-index: 2;
+  z-index: 3;
 }
 
 .modal {
@@ -90,14 +90,15 @@
   object-fit: cover;
   border-radius: 12px;
   margin-right: 40px;
-  /* overflow: hidden; */
+  flex: 1 0 100%;
 }
 
 .text {
   font-weight: 300;
   font-size: 18px;
   line-height: 21px;
-  white-space: pre-line
+  white-space: pre-line;
+  flex: 1;
 }
 
 @media (max-width: 1439px) {

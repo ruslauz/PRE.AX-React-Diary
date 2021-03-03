@@ -4,20 +4,20 @@ import { EmotionSelector } from '../EmotionSelector';
 
 import styles from './styles.module.css';
 
-export const FilterBar = ({ onChangeText, onChangeEmotion, textValue, emotionValue }) => {
+export const FilterBar = ({ emotion, setEmotion, title, onTitle }) => {
 
-  const onTextInput = e => {
-    onChangeText(e.target.value.trimStart());
-  }
+  // const onTextInput = e => {
+  //   onChangeText(e.target.value.trimStart());
+  // }
   return (
     <div className={styles.filter}>
       <input
         type="text"
         className={styles.input}
         placeholder='Поиск'
-        onChange={onTextInput}
-        value={textValue}/>
-      <EmotionSelector onChangeEmotion={onChangeEmotion} emotionValue={emotionValue}/>
+        onChange={onTitle}
+        value={title}/>
+      <EmotionSelector onChangeEmotion={setEmotion} emotionValue={emotion}/>
     </div>
   )
 };
