@@ -18,7 +18,6 @@ export const postData = async (body) => {
   });
   if (response.ok) {
     const json = await response.json();
-    console.log(json);
     return json;
   }
   throw new Error(response.status);

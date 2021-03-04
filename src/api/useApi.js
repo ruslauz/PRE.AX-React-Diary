@@ -21,7 +21,7 @@ export const useApi = () => {
     })
       .then(response => response.json())
       .then(result => {
-        console.log(result);
+        // console.log(result);
         setData(result.photos || []);
         // setData(result);
         setIsLoaded(true);

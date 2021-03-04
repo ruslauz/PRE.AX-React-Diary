@@ -6,7 +6,7 @@ import {ReactComponent as Check} from '../../assets/img/button-icons/check.svg';
 import styles from './styles.module.css';
 import cn from 'classnames';
 
-export const SearchPicture = ({ onPictureSelect, useSearchData, valid , setImgValid}) => {
+export const SearchPicture = ({ onPictureSelect, useSearchData, valid , setImgValid }) => {
   const { 
     data,
     setData,

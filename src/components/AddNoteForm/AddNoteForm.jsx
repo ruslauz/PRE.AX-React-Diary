@@ -10,7 +10,7 @@ import {ReactComponent as Add} from '../../assets/img/button-icons/add.svg'
 import { useFormData } from '../../hooks/useFormData';
 
 
-export const AddNoteForm = ({ img, setAddNote, saveRecord, setImgValid }) => {
+export const AddNoteForm = ({ img, setAddNote, saveRecord, setImgValid, setSelectImgValid }) => {
 
   const [moodValid, setMoodValid] = useState(true);
   const [titleValid, setTitleValid] = useState(true);
@@ -32,8 +32,11 @@ export const AddNoteForm = ({ img, setAddNote, saveRecord, setImgValid }) => {
       setAddNote(false);
       resetFormData(); 
     } else {
-      // console.log(`Заполните поле ${ (!title && 'Название' )|| (!description && 'Описание') || (!date && 'Дата') || (!mood && 'Настроение') || (!img && 'Картинка') }`)
-      (!title && setTitleValid(false) ) || (!description && setDescrValid(false)) || (!date && setDateValid(false)) || (!mood && setMoodValid(false)) || (!img && setImgValid(false))
+      (!title && setTitleValid(false) ) 
+      || (!description && setDescrValid(false)) 
+      || (!date && setDateValid(false)) 
+      || (!mood && setMoodValid(false)) 
+      || (!img && (setImgValid(false) || setSelectImgValid(false)))
     }
   }
 

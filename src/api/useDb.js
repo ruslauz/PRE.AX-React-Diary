@@ -8,7 +8,6 @@ export const useDb = () => {
   const saveRecord = body => {
     postData(body)
       .then(result =>{
-        console.log(result)
         setData(prev => prev.concat(result))
       })
       .catch(err => console.log(err))
@@ -17,7 +16,6 @@ export const useDb = () => {
   useEffect(() => {
     getData()
       .then(result => {
-        // console.log(result);
         setData(result);
         setIsLoaded(true);
       })

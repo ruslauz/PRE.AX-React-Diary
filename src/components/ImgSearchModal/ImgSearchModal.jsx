@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import {ReactComponent as Search} from '../../assets/img/button-icons/search.svg';
 
 import styles from './styles.module.css';
 
+export const ImgSearchModal = ({ onClose, onPictureSelect, useSearchData, selectedImgSrc, setSelectImgValid }) => {
 
-export const ImgSearchModal = ({ onClose, onPictureSelect, useSearchData }) => {
-
+  const imgRef = useRef();
   const { 
     data,
     isLoaded,
@@ -21,6 +21,17 @@ export const ImgSearchModal = ({ onClose, onPictureSelect, useSearchData }) => {
   const onModal = (e) => {
     e.stopPropagation();
   };
+
+  const onImgClick = (value) => (e) => {
+    onPictureSelect(value);
+    setSelectImgValid(true);
+  }
+
+  useEffect(() => {
+    if (selectedImgSrc) {
+      imgRef.current.scrollIntoView({behavior: "smooth"})
+    }
+  }, [selectedImgSrc])
 
   return (
     <>
@@ -41,10 +52,11 @@ export const ImgSearchModal = ({ onClose, onPictureSelect, useSearchData }) => {
                   isLoaded && !!data.length && data.map(item => {
                       const { src: { medium, large } } = item
                         return <img src={medium}
+                          ref={selectedImgSrc === large ? imgRef : undefined}
                           alt=""
                           className={styles.resultImg}
                           key={item.id}
-                          onClick={() => onPictureSelect(large)}/>
+                          onClick={onImgClick(large)}/>
                     })
                 }
                 {

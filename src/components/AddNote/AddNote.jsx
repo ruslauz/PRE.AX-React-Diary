@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import cn from 'classnames';
 
 import { Main } from '../Main';
 import { AddNoteForm } from '../AddNoteForm/AddNoteForm';
@@ -14,6 +15,7 @@ export const AddNote = ({ setAddNote, saveRecord }) => {
 
   const [selected, setSelected] = useState(false);
   const [imgSrc, setImgSrc] = useState('');
+  const [selectImgValid, setSelectImgValid] =useState(true);
   const [imgValid, setImgValid] = useState(true);
   const [modal, setModal] = useState(false);
 
@@ -35,7 +37,7 @@ export const AddNote = ({ setAddNote, saveRecord }) => {
     <>
       <Main>
         <div className={styles.addNote}>
-          <div className={styles.selectImg} onClick={onModalOpen}>
+          <div className={selectImgValid ? styles.selectImg : cn(styles.selectImg, styles.invalid)} onClick={onModalOpen}>
             <div className={styles.imgWrap}>
               {
                 selected 
@@ -48,10 +50,20 @@ export const AddNote = ({ setAddNote, saveRecord }) => {
             img={imgSrc}
             setAddNote={setAddNote}
             saveRecord={saveRecord}
+            setImgValid={setImgValid}
+            setSelectImgValid={setSelectImgValid} />
+          <SearchPicture
+            onPictureSelect={setImgSrc}
+            useSearchData={useSearchData} 
+            valid={imgValid}
             setImgValid={setImgValid} />
-          <SearchPicture onPictureSelect={setImgSrc} useSearchData={useSearchData} valid={imgValid} setImgValid={setImgValid} />
           {
-            modal && <ImgSearchModal onClose={onModalClose} onPictureSelect={onPictureSelect} useSearchData={useSearchData}/>
+            modal && <ImgSearchModal
+              onClose={onModalClose}
+              onPictureSelect={onPictureSelect}
+              useSearchData={useSearchData}
+              selectedImgSrc={imgSrc}
+              setSelectImgValid={setSelectImgValid} />
           }
         </div>
       </Main>
