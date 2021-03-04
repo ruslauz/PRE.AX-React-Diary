@@ -58,6 +58,7 @@
   font-size: 18px;
   line-height: 21px;
   border: 2px solid transparent;
+  min-height: 478px;
 }
 
 .textarea::placeholder {

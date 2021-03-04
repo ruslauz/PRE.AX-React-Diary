@@ -41,10 +41,17 @@
   flex: 1;
 }
 
+.message {
+  text-align: center;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
 @media (max-width: 767px) {
   .layer {
     display: flex;
     padding: 20px;
+    align-items: flex-start;
   }
 
   .modal {
@@ -52,6 +59,7 @@
     max-height: 100%;
     position: relative;
     padding: 60px 0 0;
+    height: auto;
   }
 
   .content {

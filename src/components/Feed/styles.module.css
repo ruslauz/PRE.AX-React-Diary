@@ -6,3 +6,10 @@
   gap: 20px;
   justify-content: center;
 }
+
+.message {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+}

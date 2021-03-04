@@ -20,10 +20,15 @@ export const Feed = ({ data, isLoaded }) => {
   return (
     <>
       <Main>
+        {
+          isLoaded && !data.length && <h3 className={styles.message}>Список записей пуст</h3>
+        }
+        {
+          !isLoaded && <h3 className={styles.message}>Записи загружаются...</h3>
+        }
         <div className={styles.cards}>
           {
-            isLoaded && data 
-            ? data.map(dat => {
+            isLoaded && data && data.map(dat => {
               const { id, img, title, date, description, mood } = dat
               return <Card
                 key={id}
@@ -35,10 +40,6 @@ export const Feed = ({ data, isLoaded }) => {
                 description={description}
                 mood={mood}/>
             })
-            : <div>...Data Is Loading</div>
-          }
-          {
-            // [...new Array(4).keys()].map((i) => <div key={i} className='mask'></div>)
           }
         </div>
         {

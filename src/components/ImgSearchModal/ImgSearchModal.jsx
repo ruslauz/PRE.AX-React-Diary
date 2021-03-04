@@ -37,9 +37,7 @@ export const ImgSearchModal = ({ onClose, onPictureSelect, useSearchData }) => {
             <div className={styles.body}>
               <div className={styles.results}>
                 {
-                  isLoaded && data
-                    ? data.map(item => {
-                      // const { src: {tiny, small, medium, large, original} } = item
+                  isLoaded && !!data.length && data.map(item => {
                       const { src: { medium, large } } = item
                         return <img src={medium}
                           alt=""
@@ -47,7 +45,12 @@ export const ImgSearchModal = ({ onClose, onPictureSelect, useSearchData }) => {
                           key={item.id}
                           onClick={() => onPictureSelect(large)}/>
                     })
-                    : <div>...Data Is Loading</div>
+                }
+                {
+                  isLoaded && !(data.length) && <h3 className={styles.message}>Ничего не найдено по данному запросу</h3>
+                }
+                {
+                  !isLoaded && <h3 className={styles.message}>Загрузка...</h3>
                 }
               </div>
             </div>
