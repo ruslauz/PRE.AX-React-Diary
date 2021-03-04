@@ -14,6 +14,7 @@ export const AddNote = ({ setAddNote, saveRecord }) => {
 
   const [selected, setSelected] = useState(false);
   const [imgSrc, setImgSrc] = useState('');
+  const [imgValid, setImgValid] = useState(true);
   const [modal, setModal] = useState(false);
 
   const onModalOpen = (e) => {
@@ -43,8 +44,12 @@ export const AddNote = ({ setAddNote, saveRecord }) => {
               }
             </div>
           </div>
-          <AddNoteForm img={imgSrc} setAddNote={setAddNote} saveRecord={saveRecord} />
-          <SearchPicture onPictureSelect={setImgSrc} useSearchData={useSearchData}/>
+          <AddNoteForm
+            img={imgSrc}
+            setAddNote={setAddNote}
+            saveRecord={saveRecord}
+            setImgValid={setImgValid} />
+          <SearchPicture onPictureSelect={setImgSrc} useSearchData={useSearchData} valid={imgValid} setImgValid={setImgValid} />
           {
             modal && <ImgSearchModal onClose={onModalClose} onPictureSelect={onPictureSelect} useSearchData={useSearchData}/>
           }

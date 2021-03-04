@@ -35,6 +35,8 @@
   border: none;
   border-radius: 12px;
   width: 100%;
+  max-height: 60px;
+  border: 2px solid transparent;
 }
 
 .input::placeholder {
@@ -55,6 +57,7 @@
   padding: 16px 20px;
   font-size: 18px;
   line-height: 21px;
+  border: 2px solid transparent;
 }
 
 .textarea::placeholder {
@@ -132,6 +135,11 @@
     font-size: 16px;
     line-height: 19px;
   }
+
+  .input {
+    max-height: 40px;
+  }
+
   .textarea {
     height: 100%;
     min-height: 238px;
@@ -148,5 +156,9 @@
     max-width: 100%;
     justify-content: center;
   }
+}
+
+.invalid {
+  border-color: red;
 }
 

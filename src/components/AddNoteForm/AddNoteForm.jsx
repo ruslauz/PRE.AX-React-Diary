@@ -3,43 +3,37 @@ import { Button } from '../Button';
 import { EmotionSelector } from '../EmotionSelector';
 
 import styles from './styles.module.css';
+import cn from 'classnames';
 
 import {ReactComponent as Add} from '../../assets/img/button-icons/add.svg'
 
 import { useFormData } from '../../hooks/useFormData';
 
 
-export const AddNoteForm = ({ img, setAddNote, saveRecord }) => {
+export const AddNoteForm = ({ img, setAddNote, saveRecord, setImgValid }) => {
 
+  const [moodValid, setMoodValid] = useState(true);
+  const [titleValid, setTitleValid] = useState(true);
+  const [dateValid, setDateValid] = useState(true);
+  const [descrValid, setDescrValid] = useState(true);
   const {
     mood, setMood,
     title, onTitle,
     date, onDate,
     description, onDescription,
     resetFormData} = useFormData();
+  
+  const onBlur = (callback) =>  () => callback(true)
 
   const onSubmit = e => {
     e.preventDefault();
     if (title && description && date && mood && img) {
-        const body = {
-        title,
-        description,
-        date,
-        mood,
-        img
-        }
-        console.log(body);
-        // setRecords(records => {
-        //     const newRecords = records.concat([body]);
-        //     window.localStorage.setItem('records', JSON.stringify(newRecords));
-        //     return newRecords;
-        // });
-        saveRecord(body);
-        setAddNote(false);
-        resetFormData(); 
-        // setSelected(false);
+      saveRecord({ title, description, date, mood,  img });
+      setAddNote(false);
+      resetFormData(); 
     } else {
-        console.log(`Заполните поле ${ (!title && 'Название' )|| (!description && 'Описание') || (!date && 'Дата') || (!mood && 'Настроение') || (!img && 'Картинка') }`)
+      // console.log(`Заполните поле ${ (!title && 'Название' )|| (!description && 'Описание') || (!date && 'Дата') || (!mood && 'Настроение') || (!img && 'Картинка') }`)
+      (!title && setTitleValid(false) ) || (!description && setDescrValid(false)) || (!date && setDateValid(false)) || (!mood && setMoodValid(false)) || (!img && setImgValid(false))
     }
   }
 
@@ -49,24 +43,27 @@ export const AddNoteForm = ({ img, setAddNote, saveRecord }) => {
         <div className={styles.formItem}>
           <input
             type="text"
-            className={styles.input}
+            className={titleValid ? styles.input : cn(styles.input, styles.invalid)}
             placeholder='Название'
             value={title}
-            onChange={onTitle} />
-          <EmotionSelector emotionValue={mood} onChangeEmotion={setMood} />
+            onChange={onTitle} 
+            onBlur={onBlur(setTitleValid)}/>
+          <EmotionSelector emotionValue={mood} onChangeEmotion={setMood} valid={moodValid} onBlur={onBlur(setMoodValid)} />
           <input
             type="date"
-            className={`${styles.input} ${styles.inputDate}`}
+            className={dateValid ? cn(styles.input, styles.inputDate) : cn(styles.input, styles.inputDate, styles.invalid)}
             placeholder='Дата'
             value={date}
-            onChange={onDate} />
+            onChange={onDate} 
+            onBlur={onBlur(setDateValid)}/>
         </div>
         <textarea
           name="" 
-          className={styles.textarea}
+          className={descrValid ? styles.textarea : cn(styles.textarea, styles.invalid)}
           placeholder='Описание'
           value={description}
-          onChange={onDescription} />
+          onChange={onDescription} 
+          onBlur={onBlur(setDescrValid)} />
         <div className={styles.formButton}>
           <Button
             title='Создать'

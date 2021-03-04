@@ -4,8 +4,9 @@ import {ReactComponent as Search} from '../../assets/img/button-icons/search.svg
 import {ReactComponent as Check} from '../../assets/img/button-icons/check.svg';
 
 import styles from './styles.module.css';
+import cn from 'classnames';
 
-export const SearchPicture = ({ onPictureSelect, useSearchData }) => {
+export const SearchPicture = ({ onPictureSelect, useSearchData, valid , setImgValid}) => {
   const { 
     data,
     setData,
@@ -15,6 +16,8 @@ export const SearchPicture = ({ onPictureSelect, useSearchData }) => {
     onSearchStart } = useSearchData;
 
   const [selectedId, setSelectedId] = useState(null);
+
+  const onBlur = () => setImgValid(true);
 
   const onImageClick = (src, id) => (e) => {
     onPictureSelect(src);
@@ -40,7 +43,10 @@ export const SearchPicture = ({ onPictureSelect, useSearchData }) => {
     <>
       <div className={styles.pictureSelect}>
         <form action="" className={styles.form} onSubmit={onSubmit}>
-          <input type="text" className={styles.input} placeholder='Поиск' value={searchText} onChange={onSearchInput}/>
+          <input type="text"
+            className={valid ? styles.input : cn(styles.input, styles.invalid)}
+            placeholder='Поиск' value={searchText}
+            onChange={onSearchInput} onBlur={onBlur} />
           <button className={styles.search} onClick={onSearchStart}><Search/></button>
         </form>
         <div className={styles.results}>
@@ -58,7 +64,7 @@ export const SearchPicture = ({ onPictureSelect, useSearchData }) => {
                               src={large}
                               alt="Фото"
                               className={styles.resultImg}
-                              onClick={onImageClick(large, id)}/>
+                              onClick={onImageClick(large, id)} />
                             {
                               selected ? <div className={styles.selected}><Check/></div> : null
                             }
