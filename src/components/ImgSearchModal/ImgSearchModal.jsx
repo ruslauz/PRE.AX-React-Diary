@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import {ReactComponent as Search} from '../../assets/img/button-icons/search.svg';
 
@@ -7,7 +7,8 @@ import styles from './styles.module.css';
 
 export const ImgSearchModal = ({ onClose, onPictureSelect, useSearchData }) => {
 
-  const { data,
+  const { 
+    data,
     isLoaded,
     searchText,
     onSearchInput,
@@ -25,15 +26,15 @@ export const ImgSearchModal = ({ onClose, onPictureSelect, useSearchData }) => {
     <>
       <div className={styles.layer} onClick={onClose}>
         <div className={styles.modal} onClick={onModal}>
-          <div className={styles.content}>
-            <div className={styles.header}>
-              <div className={styles.pictureSelect}>
-                <form action="" className={styles.form} onSubmit={onSubmit}>
-                  <input type="text" className={styles.input} placeholder='Поиск' onChange={onSearchInput} value={searchText}/>
-                  <button className={styles.search} onClick={onSearchStart}><Search/></button>
-                </form>
-              </div>
+          <div className={styles.header}>
+            <div className={styles.pictureSelect}>
+              <form action="" className={styles.form} onSubmit={onSubmit}>
+                <input type="text" className={styles.input} placeholder='Поиск' onChange={onSearchInput} value={searchText}/>
+                <button className={styles.search} onClick={onSearchStart}><Search/></button>
+              </form>
             </div>
+          </div>
+          <div className={styles.content}>
             <div className={styles.body}>
               <div className={styles.results}>
                 {
