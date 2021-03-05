@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { Button } from '../Button';
 import { FilterBar } from '../FilterBar';
@@ -9,10 +9,10 @@ import {ReactComponent as Grid} from '../../assets/img/button-icons/display-grid
 
 import styles from './styles.module.css';
 
-export const Header = ({
+export const Header = memo(({
   addNote,
   setAddNote,
-  emotion, setEmotion,
+  emotion, onEmotion,
   title, onTitle }) => {
   
     const onAddNote = () => setAddNote(true);
@@ -28,7 +28,7 @@ export const Header = ({
                 title={title}
                 emotion={emotion}
                 onTitle={onTitle}
-                setEmotion={setEmotion}/>
+                onEmotion={onEmotion}/>
               )
           }
           <div className={styles.buttons}>
@@ -42,4 +42,6 @@ export const Header = ({
           </div>
       </header>
     )
-};
+});
+
+Header.displayName = 'Header';

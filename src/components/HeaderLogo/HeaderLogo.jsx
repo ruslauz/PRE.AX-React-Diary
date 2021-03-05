@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import styles from './styles.module.css';
 import icon from '../../assets/img/header/logo/icon.svg';
 
-export const HeaderLogo = ({ title }) => {
+export const HeaderLogo = memo(({ title }) => {
   return (
     <div className={styles.logo}>
       <div className={styles.icon}>
@@ -12,4 +12,6 @@ export const HeaderLogo = ({ title }) => {
       <h1 className={styles.text}>{title}</h1>
     </div>
   )
-};
+});
+
+HeaderLogo.displayName = 'HeaderLogo';

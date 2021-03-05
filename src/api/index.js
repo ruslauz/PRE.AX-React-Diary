@@ -1,15 +1,15 @@
-export const getData = async () => {
-  const URL = 'http://localhost:3004/records/';
-  const response = await fetch(URL);
+export const getData = async (url, headers) => {
+  const response = await fetch(url, {
+    headers: headers
+  });
   if (response.ok) {
     return await response.json();
   }
   throw new Error(response.status);
 } 
 
-export const postData = async (body) => {
-  const URL = 'http://localhost:3004/records/';
-  const response = await fetch(URL, {
+export const postData = async (url, body) => {
+  const response = await fetch(url, {
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
     },

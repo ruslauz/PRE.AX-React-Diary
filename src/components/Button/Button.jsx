@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import styles from './styles.module.css';
 
-export const Button = ({ children, title, background, color, onClick=() => {}, ...rest}) => {
+export const Button = memo(({ children, title, background, color, onClick=() => {}, ...rest}) => {
   return (
     <>
       <button style={{ background: background, color: color }} className={styles.button} onClick={onClick} {...rest}>
@@ -11,4 +11,6 @@ export const Button = ({ children, title, background, color, onClick=() => {}, .
       </button>
     </>
   )
-};
+});
+
+Button.displayName = 'Button';
