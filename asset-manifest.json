@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/PRE.AX-React-Diary/static/css/main.187da146.chunk.css",
+    "main.js": "/PRE.AX-React-Diary/static/js/main.5746d7f4.chunk.js",
+    "runtime-main.js": "/PRE.AX-React-Diary/static/js/runtime-main.86de37fa.js",
+    "static/js/2.15c0a3e1.chunk.js": "/PRE.AX-React-Diary/static/js/2.15c0a3e1.chunk.js",
+    "static/css/3.3424a419.chunk.css": "/PRE.AX-React-Diary/static/css/3.3424a419.chunk.css",
+    "static/js/3.d9e3970f.chunk.js": "/PRE.AX-React-Diary/static/js/3.d9e3970f.chunk.js",
+    "index.html": "/PRE.AX-React-Diary/index.html",
+    "static/js/2.15c0a3e1.chunk.js.LICENSE.txt": "/PRE.AX-React-Diary/static/js/2.15c0a3e1.chunk.js.LICENSE.txt",
+    "static/media/add.9b7a7995.svg": "/PRE.AX-React-Diary/static/media/add.9b7a7995.svg",
+    "static/media/check.299919a3.svg": "/PRE.AX-React-Diary/static/media/check.299919a3.svg",
+    "static/media/close.4ebec5c8.svg": "/PRE.AX-React-Diary/static/media/close.4ebec5c8.svg",
+    "static/media/display-grid.ed21f85f.svg": "/PRE.AX-React-Diary/static/media/display-grid.ed21f85f.svg",
+    "static/media/icon.7f75abbd.svg": "/PRE.AX-React-Diary/static/media/icon.7f75abbd.svg",
+    "static/media/image.00f5f45a.svg": "/PRE.AX-React-Diary/static/media/image.00f5f45a.svg",
+    "static/media/pen.41a0b22a.svg": "/PRE.AX-React-Diary/static/media/pen.41a0b22a.svg",
+    "static/media/search.a565e3e6.svg": "/PRE.AX-React-Diary/static/media/search.a565e3e6.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.86de37fa.js",
+    "static/js/2.15c0a3e1.chunk.js",
+    "static/css/main.187da146.chunk.css",
+    "static/js/main.5746d7f4.chunk.js"
+  ]
+}
