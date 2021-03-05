@@ -1,12 +1,12 @@
-import { memo, useState } from 'react';
-
-import { Header } from '../Header';
-import { AddNote } from '../AddNote';
-import { Feed } from '../Feed/Feed';
+import { lazy, memo, Suspense, useState } from 'react';
 
 import styles from './App.module.css';
 
+import { Header } from '../Header';
 import { useApp } from '../../hooks/useApp';
+import { Feed } from '../Feed';
+
+const AddNote = lazy(() => import('../AddNote'));
 
 export const App = memo(() => {
   const  {  
@@ -30,10 +30,12 @@ export const App = memo(() => {
         onEmotion={onEmotion}/>
       {
         addNote
-          ? <AddNote setAddNote={setAddNote} saveRecord={saveRecord} />
-          : <Feed
-              data={filteredData}
-              isLoaded={isLoaded}/>
+          ? <Suspense fallback={<h3>Идет загрузка...</h3>}>
+              <AddNote setAddNote={setAddNote} saveRecord={saveRecord} />
+            </Suspense>
+          :<Feed
+            data={filteredData}
+            isLoaded={isLoaded}/>
       }
     </div>
   );

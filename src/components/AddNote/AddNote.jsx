@@ -70,3 +70,5 @@ export const AddNote = memo(({ setAddNote, saveRecord }) => {
 });
 
 AddNote.displayName = 'AddNote';
+
+export default AddNote;
