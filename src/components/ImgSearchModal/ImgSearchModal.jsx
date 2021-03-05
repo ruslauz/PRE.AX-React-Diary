@@ -28,7 +28,7 @@ export const ImgSearchModal = ({ onClose, onPictureSelect, useSearchData, select
   }
 
   useEffect(() => {
-    if (selectedImgSrc) {
+    if (selectedImgSrc && imgRef.current) {
       imgRef.current.scrollIntoView({behavior: "smooth"})
     }
   }, [selectedImgSrc])

@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import cn from 'classnames';
 
-import { Main } from '../Main';
 import { AddNoteForm } from '../AddNoteForm/AddNoteForm';
 import { SearchPicture } from '../SearchPicture';
 import { ImgSearchModal } from '../ImgSearchModal/ImgSearchModal';
@@ -10,32 +9,31 @@ import { ReactComponent as BlankImg } from '../../assets/img/button-icons/image.
 
 import styles from './styles.module.css';
 
-export const AddNote = ({ setAddNote, saveRecord }) => {
+export const AddNote = memo(({ setAddNote, saveRecord }) => {
   const useSearchData = useSearch();
-
   const [selected, setSelected] = useState(false);
   const [imgSrc, setImgSrc] = useState('');
   const [selectImgValid, setSelectImgValid] =useState(true);
   const [imgValid, setImgValid] = useState(true);
   const [modal, setModal] = useState(false);
 
-  const onModalOpen = (e) => {
+  const onModalOpen = useCallback(() => {
     setModal(true)
-  }
+  }, [])
 
-  const onModalClose = (e) => {
+  const onModalClose = useCallback(() => {
     setModal(false)
-  }
+  }, []);
 
-  const onPictureSelect = (value) => {
+  const onPictureSelect = useCallback((value) => {
     setSelected(true);
     setImgSrc(value);
-    onModalClose();
-  }
+    setModal(false)
+  }, []);
   
   return (
     <>
-      <Main>
+      <main>
         <div className={styles.addNote}>
           <div className={selectImgValid ? styles.selectImg : cn(styles.selectImg, styles.invalid)} onClick={onModalOpen}>
             <div className={styles.imgWrap}>
@@ -66,7 +64,9 @@ export const AddNote = ({ setAddNote, saveRecord }) => {
               setSelectImgValid={setSelectImgValid} />
           }
         </div>
-      </Main>
+      </main>
     </>
   )
-};
+});
+
+AddNote.displayName = 'AddNote';

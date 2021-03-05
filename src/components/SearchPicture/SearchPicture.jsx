@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 
 import {ReactComponent as Search} from '../../assets/img/button-icons/search.svg';
 import {ReactComponent as Check} from '../../assets/img/button-icons/check.svg';
@@ -6,7 +6,7 @@ import {ReactComponent as Check} from '../../assets/img/button-icons/check.svg';
 import styles from './styles.module.css';
 import cn from 'classnames';
 
-export const SearchPicture = ({ onPictureSelect, useSearchData, valid , setImgValid }) => {
+export const SearchPicture = memo(({ onPictureSelect, useSearchData, valid , setImgValid }) => {
   const { 
     data,
     setData,
@@ -17,12 +17,12 @@ export const SearchPicture = ({ onPictureSelect, useSearchData, valid , setImgVa
 
   const [selectedId, setSelectedId] = useState(null);
 
-  const onBlur = () => setImgValid(true);
+  const onBlur = useCallback(() => setImgValid(true), [setImgValid]);
 
-  const onImageClick = (src, id) => (e) => {
+  const onImageClick = useCallback((src, id) => (e) => {
     onPictureSelect(src);
     setSelectedId(id);
-  }
+  }, [onPictureSelect])
 
   const onSubmit = e => {
     e.preventDefault();
@@ -94,10 +94,12 @@ export const SearchPicture = ({ onPictureSelect, useSearchData, valid , setImgVa
                   </div>
                 </>
                 )
-            : <div>...Data Is Loading</div>
+            : <div>Загрузка...</div>
           }
         </div>
       </div>
     </>
   )
-};
+});
+
+SearchPicture.displayName = 'SearchPicture';

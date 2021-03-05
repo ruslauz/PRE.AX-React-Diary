@@ -1,14 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { EmotionSelector } from '../EmotionSelector';
 
 import styles from './styles.module.css';
 
-export const FilterBar = ({ emotion, setEmotion, title, onTitle }) => {
+export const FilterBar = memo(({ emotion, onEmotion, title, onTitle }) => {
 
-  // const onTextInput = e => {
-  //   onChangeText(e.target.value.trimStart());
-  // }
   return (
     <div className={styles.filter}>
       <input
@@ -17,7 +14,9 @@ export const FilterBar = ({ emotion, setEmotion, title, onTitle }) => {
         placeholder='Поиск'
         onChange={onTitle}
         value={title}/>
-      <EmotionSelector onChangeEmotion={setEmotion} emotionValue={emotion}/>
+      <EmotionSelector onChangeEmotion={onEmotion} emotionValue={emotion}/>
     </div>
   )
-};
+});
+
+FilterBar.displayName = 'FilterBar';

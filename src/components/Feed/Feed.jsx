@@ -1,12 +1,11 @@
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 
-import { Main } from '../Main';
 import { Card } from '../Card/Card';
 import { Modal } from '../Modal';
 
 import styles from './styles.module.css';
 
-export const Feed = ({ data, isLoaded }) => {
+export const Feed = memo(({ data, isLoaded }) => {
 
   const [modal, setModal] = useState(false);
   const [modalData, setModalData] = useState(null);
@@ -19,7 +18,7 @@ export const Feed = ({ data, isLoaded }) => {
 
   return (
     <>
-      <Main>
+      <main>
         {
           isLoaded && !data.length && <h3 className={styles.message}>Список записей пуст</h3>
         }
@@ -49,7 +48,9 @@ export const Feed = ({ data, isLoaded }) => {
               onClose={onModalClose}/>
           : null
         }
-      </Main>
+      </main>
     </>
   )
-};
+});
+
+Feed.displayName = 'Feed';

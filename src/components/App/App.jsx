@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { memo, useState } from 'react';
 
 import { Header } from '../Header';
 import { AddNote } from '../AddNote';
@@ -6,29 +6,18 @@ import { Feed } from '../Feed/Feed';
 
 import styles from './App.module.css';
 
-import { useDb } from '../../api/useDb';
-import { useFilters } from '../../hooks/useFilters';
+import { useApp } from '../../hooks/useApp';
 
-export const App = () => {
-  const  { data, isLoaded, saveRecord } = useDb();
-  const {
-    emotion, setEmotion,
-    title, onTitle 
-  } = useFilters();
+export const App = memo(() => {
+  const  {  
+    filteredData,
+    saveRecord,
+    isLoaded,
+    emotion, onEmotion,
+    title, onTitle,
+} = useApp();
 
-  const [filteredData, setFilteredData] = useState(data);
   const [addNote, setAddNote] = useState(false);
-
-  useEffect(() => {
-    if (data) {
-      setFilteredData(() => {
-        return  data.filter(note => {
-          return note.mood.includes(emotion) && note.title.toLocaleLowerCase().includes(title.toLocaleLowerCase())
-        })
-      })
-    }
-  }, [emotion, title, data, setFilteredData])
-
 
   return (
     <div className={styles.app}>
@@ -38,7 +27,7 @@ export const App = () => {
         title={title}
         emotion={emotion}
         onTitle={onTitle}
-        setEmotion={setEmotion}/>
+        onEmotion={onEmotion}/>
       {
         addNote
           ? <AddNote setAddNote={setAddNote} saveRecord={saveRecord} />
@@ -48,4 +37,6 @@ export const App = () => {
       }
     </div>
   );
-};
+});
+
+App.displayName = 'App';

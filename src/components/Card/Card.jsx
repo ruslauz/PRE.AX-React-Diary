@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import styles from './styles.module.css';
 
-export const Card = ({ title, date, description, img, mood, onClick }) => {
+export const Card = memo(({ title, date, description, img, mood, onClick }) => {
   const onCardClick = () => onClick({ title, date, description, img, mood });
   const cardDate = new Date(date).toLocaleString('ru-RU', {
       day: 'numeric',
@@ -28,4 +28,6 @@ export const Card = ({ title, date, description, img, mood, onClick }) => {
       </div>
     </>
   )
-};
+});
+
+Card.displayName = 'Card';
