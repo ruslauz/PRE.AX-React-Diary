@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export const useFormData = () => {
   const [mood, setMood] = useState('');
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
-  // const [imgSrc, setImgSrc] = useState('');
 
   const onTitle = e => {
     setTitle(e.target.value.trimStart());
@@ -14,6 +13,11 @@ export const useFormData = () => {
   const onDate = e => {
     setDate(e.target.value);
   }
+
+  const onMood = useCallback((e) => {
+    const emotion = e.target.value
+    setMood(emotion);
+  }, []) 
 
   const onDescription = e => {
     setDescription(e.target.value.trimStart());
@@ -24,12 +28,10 @@ export const useFormData = () => {
     setTitle('');
     setDate('');
     setDescription('');
-    /* setImgSrc(''); */
   }
 
   return {
-    /* imgSrc, setImgSrc, */
-    mood, setMood,
+    mood, onMood,
     title, onTitle,
     date, onDate,
     description, onDescription, resetFormData,

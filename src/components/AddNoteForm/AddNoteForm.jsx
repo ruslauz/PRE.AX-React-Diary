@@ -17,7 +17,7 @@ export const AddNoteForm = memo(({ img, setAddNote, saveRecord, setImgValid, set
   const [dateValid, setDateValid] = useState(true);
   const [descrValid, setDescrValid] = useState(true);
   const {
-    mood, setMood,
+    mood, onMood, 
     title, onTitle,
     date, onDate,
     description, onDescription,
@@ -50,7 +50,7 @@ export const AddNoteForm = memo(({ img, setAddNote, saveRecord, setImgValid, set
           value={title}
           onChange={onTitle} 
           onBlur={onBlur(setTitleValid)}/>
-        <EmotionSelector emotionValue={mood} onChangeEmotion={setMood} valid={moodValid} onBlur={onBlur(setMoodValid)} />
+        <EmotionSelector emotionValue={mood} onChangeEmotion={onMood} valid={moodValid} onBlur={onBlur(setMoodValid)} />
         <input
           type="date"
           className={dateValid ? cn(styles.input, styles.inputDate) : cn(styles.input, styles.inputDate, styles.invalid)}
