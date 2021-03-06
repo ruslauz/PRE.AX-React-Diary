@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/PRE.AX-React-Diary/static/css/main.187da146.chunk.css",
-    "main.js": "/PRE.AX-React-Diary/static/js/main.21f95daf.chunk.js",
-    "runtime-main.js": "/PRE.AX-React-Diary/static/js/runtime-main.161f66fb.js",
+    "main.js": "/PRE.AX-React-Diary/static/js/main.f970f240.chunk.js",
+    "runtime-main.js": "/PRE.AX-React-Diary/static/js/runtime-main.2c1611f1.js",
     "static/js/2.15c0a3e1.chunk.js": "/PRE.AX-React-Diary/static/js/2.15c0a3e1.chunk.js",
     "static/css/3.3424a419.chunk.css": "/PRE.AX-React-Diary/static/css/3.3424a419.chunk.css",
-    "static/js/3.33d32538.chunk.js": "/PRE.AX-React-Diary/static/js/3.33d32538.chunk.js",
+    "static/js/3.a4898783.chunk.js": "/PRE.AX-React-Diary/static/js/3.a4898783.chunk.js",
     "index.html": "/PRE.AX-React-Diary/index.html",
     "static/js/2.15c0a3e1.chunk.js.LICENSE.txt": "/PRE.AX-React-Diary/static/js/2.15c0a3e1.chunk.js.LICENSE.txt",
     "static/media/add.9b7a7995.svg": "/PRE.AX-React-Diary/static/media/add.9b7a7995.svg",
@@ -18,9 +18,9 @@
     "static/media/search.a565e3e6.svg": "/PRE.AX-React-Diary/static/media/search.a565e3e6.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.161f66fb.js",
+    "static/js/runtime-main.2c1611f1.js",
     "static/js/2.15c0a3e1.chunk.js",
     "static/css/main.187da146.chunk.css",
-    "static/js/main.21f95daf.chunk.js"
+    "static/js/main.f970f240.chunk.js"
   ]
 }
