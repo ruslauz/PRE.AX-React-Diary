@@ -30,16 +30,20 @@ export const useApp = () => {
   }, [setTitle, filterData])
 
   const saveRecord = body => {
+    console.log(URL);
     postData(URL, body)
       .then(result =>{
-        setData(prev => prev.concat(result))
+        console.log(result);
+        setFilteredData(prev => prev.concat(result))
       })
       .catch(err => console.log(err))
   };
 
   useEffect(() => {
+    console.log(URL);
     getData(URL)
       .then(result => {
+        console.log(result);
         setData(result);
         setFilteredData(result)
         setIsLoaded(true);

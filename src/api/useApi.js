@@ -19,7 +19,7 @@ export const useApi = () => {
     const URL = `${process.env.REACT_APP_JSON_URL}pictures`;
     const URL2 = `${process.env.REACT_APP_API_URL}${query}&per_page=20`;
     const MainUrl =  process.env.REACT_APP_API_KEY ? URL2 : URL;
-
+    console.log(MainUrl);
     getData(MainUrl, { Authorization: process.env.REACT_APP_API_KEY })
       .then(result => {
         setData(result.photos || []);
